@@ -21,6 +21,12 @@ const typeDefs = gql`
 `
 
 const resolvers = {
+  User: {
+    wage(current_object) {
+      return current_object.current_wage
+    }
+  },
+
   Query: {
     ola() {
       return "Apenas retorna uma string"
@@ -34,7 +40,7 @@ const resolvers = {
         name: "Vitória Souza",
         email: "vitoria@teste.com",
         age: 21,
-        wage: 1234.56,
+        current_wage: 1234.56,
         vip: true
       }
     }
