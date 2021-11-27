@@ -5,13 +5,15 @@ const users = [
     id: 1,
     name: "Danilo Caraça",
     email: "danilo@teste.com",
-    age: 30
+    age: 30,
+    profileId: 1
   },
   {
     id: 2,
     name: "Leila Souza",
     email: "leila@teste.com",
-    age: 42
+    age: 42,
+    profileId: 2
   }
 ]
 
@@ -36,6 +38,7 @@ const typeDefs = gql`
     age: Int
     wage: Float
     vip: Boolean
+    profile: Profile
   }
 
   type Product {
@@ -68,6 +71,10 @@ const resolvers = {
   User: {
     wage(currentObject) {
       return currentObject.currentWage
+    },
+    profile(currentObject) {
+      const selector = profiles.filter(profile => profile.id === currentObject.id)
+      return selector ? selector[0] : "Not found current profile"
     }
   },
 
