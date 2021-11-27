@@ -42,6 +42,7 @@ const typeDefs = gql`
     product: Product
     numbersMegaSena: [Int!]!  
     users: [User]!
+    user(id: ID): User
   }
 `
 
@@ -92,6 +93,10 @@ const resolvers = {
     },
     users() {
       return users
+    },
+    user(_, args) {
+      const selectors = users.filter(user => user.id == args.id)
+      return selectors ? selectors[0] : 'Not found'
     }
   }
 }
