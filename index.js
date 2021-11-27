@@ -12,11 +12,19 @@ const typeDefs = gql`
     vip: Boolean
   }
 
+  type Product {
+    name: String!
+    price: Float!
+    discount: Float
+    discount_price: Float
+  }
+
   # Pontos de entrada da API
   type Query {
     ola: String!
     horaAtual: Date
     userLogado: User
+    product: Product
   }
 `
 
@@ -24,6 +32,15 @@ const resolvers = {
   User: {
     wage(current_object) {
       return current_object.current_wage
+    }
+  },
+
+  Product: {
+    discount_price(current_object) {
+      if (current_object.discount) {
+        return current_object.price - current_object.discount
+      }
+      return current_object.price
     }
   },
 
@@ -42,6 +59,13 @@ const resolvers = {
         age: 21,
         current_wage: 1234.56,
         vip: true
+      }
+    },
+    product() {
+      return {
+        name: "Smartphone",
+        price: 6543.21,
+        discount: 543.21
       }
     }
   }
