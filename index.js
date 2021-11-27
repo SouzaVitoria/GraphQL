@@ -1,6 +1,6 @@
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer, gql } = require('apollo-server')
 
-const typeDefs = gql`  
+const typeDefs = gql`
   scalar Date
 
   type User {
@@ -16,7 +16,7 @@ const typeDefs = gql`
     name: String!
     price: Float!
     discount: Float
-    discount_price: Float
+    discountPrice: Float
   }
 
   # Pontos de entrada da API
@@ -31,40 +31,40 @@ const typeDefs = gql`
 
 const resolvers = {
   User: {
-    wage(current_object) {
-      return current_object.current_wage
+    wage(currentObject) {
+      return currentObject.currentWage
     }
   },
 
   Product: {
-    discount_price(current_object) {
-      if (current_object.discount) {
-        return current_object.price - current_object.discount
+    discountPrice(currentObject) {
+      if (currentObject.discount) {
+        return currentObject.price - currentObject.discount
       }
-      return current_object.price
+      return currentObject.price
     }
   },
 
   Query: {
     ola() {
-      return "Apenas retorna uma string"
+      return 'Apenas retorna uma string'
     },
     horaAtual() {
-      return new Date
+      return new Date()
     },
     userLogado() {
       return {
         id: 1,
-        name: "Vitória Souza",
-        email: "vitoria@teste.com",
+        name: 'Vitória Souza',
+        email: 'vitoria@teste.com',
         age: 21,
-        current_wage: 1234.56,
+        currentWage: 1234.56,
         vip: true
       }
     },
     product() {
       return {
-        name: "Smartphone",
+        name: 'Smartphone',
         price: 6543.21,
         discount: 543.21
       }
