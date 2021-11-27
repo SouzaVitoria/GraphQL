@@ -15,6 +15,17 @@ const users = [
   }
 ]
 
+const profiles = [
+  {
+    id: 1,
+    type: "Administrador"
+  },
+  {
+    id: 2,
+    type: "Comum"
+  }
+]
+
 const typeDefs = gql`
   scalar Date
 
@@ -34,6 +45,11 @@ const typeDefs = gql`
     discountPrice: Float
   }
 
+  type Profile {
+    id: Int
+    type: String
+  }
+
   # Pontos de entrada da API
   type Query {
     ola: String!
@@ -43,6 +59,8 @@ const typeDefs = gql`
     numbersMegaSena: [Int!]!  
     users: [User]!
     user(id: ID): User
+    profiles: [Profile]!
+    profile(id: Int): Profile
   }
 `
 
@@ -97,6 +115,13 @@ const resolvers = {
     user(_, args) {
       const selectors = users.filter(user => user.id == args.id)
       return selectors ? selectors[0] : 'Not found'
+    },
+    profiles() {
+      return profiles
+    },
+    profile(_, { id }) {
+      const selectors = profiles.filter(profile => profile.id === id)
+      return selectors ? selectors[0] : "Not found current profile"
     }
   }
 }
