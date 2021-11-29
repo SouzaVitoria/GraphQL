@@ -1,6 +1,12 @@
+let id = 1;
+
+function nextId() {
+  return id++;
+}
+
 const users = [
   {
-    id: 1,
+    id: nextId(),
     name: "Danilo Caraça",
     email: "danilo@teste.com",
     age: 30,
@@ -8,7 +14,7 @@ const users = [
     status: "BLOCKED"
   },
   {
-    id: 2,
+    id: nextId(),
     name: "Leila Souza",
     email: "leila@teste.com",
     age: 42,
@@ -28,4 +34,4 @@ const profiles = [
   }
 ]
 
-module.exports = { users, profiles }
+module.exports = { users, profiles, nextId }
