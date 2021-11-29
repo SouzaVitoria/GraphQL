@@ -28,4 +28,19 @@ function deleteUser (_, { id }) {
   return deleteUser ? deleteUser[0] : null
 }
 
-module.exports = { newUser, deleteUser }
+function updateUser (_, args) {
+  const i = users.findIndex(user => user.id === args.id)
+
+  if (i < 0) return null
+
+  const user = {
+    ...users[i],
+    ...args
+  }
+
+  users.splice(i, 1, user)
+  
+  return user
+}
+
+module.exports = { newUser, deleteUser, updateUser }
