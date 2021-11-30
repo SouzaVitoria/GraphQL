@@ -19,3 +19,14 @@ type Profile {
   id: Int
   type: String
 }
+
+input userInput {
+  name: String
+  email: String
+  age: Int
+}
+
+input userFilter {
+  id: Int
+  email: String
+}
