@@ -1,4 +1,4 @@
-const Query = require('./Query')
+const Query = require('./queries')
 const User = require('./User')
 const Mutation = require('./Mutation')
 

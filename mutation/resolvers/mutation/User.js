@@ -1,16 +1,16 @@
-const { users, nextId } = require('../data/db')
+const { users, nextId } = require('../../data/db')
 
 function indexUser(filter) {
- if(!filter) return -1
- const { id, email }= filter
+  if (!filter) return -1
+  const { id, email } = filter
 
- if(id) {
-   return users.findIndex(user => user.id === id)
- } else if (email) {
-   return users.findIndex(user => user.email === email)
- }
+  if (id) {
+    return users.findIndex(user => user.id === id)
+  } else if (email) {
+    return users.findIndex(user => user.email === email)
+  }
 
- return -1
+  return -1
 }
 
 function newUser(_, { data }) {
@@ -31,13 +31,13 @@ function newUser(_, { data }) {
   return newUser
 }
 
-function deleteUser (_, { filter }) {
+function deleteUser(_, { filter }) {
   const i = indexUser(filter)
 
   if (i < 0) return null
 
   const deleteUser = users.splice(i, 1)
-  
+
   return deleteUser ? deleteUser[0] : null
 }
 
@@ -52,7 +52,7 @@ function updateUser(_, { filter, data }) {
   }
 
   users.splice(i, 1, user)
-  
+
   return user
 }
 
