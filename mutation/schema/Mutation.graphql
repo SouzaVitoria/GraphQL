@@ -15,4 +15,9 @@ type Mutation {
   newProfile (
     type: String!
   ): Profile
+
+  deleteProfile (
+    type: String
+    id: String
+  ): Profile
 }
