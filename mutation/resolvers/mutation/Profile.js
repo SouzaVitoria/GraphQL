@@ -44,4 +44,19 @@ function deleteProfile(_, args) {
   return deleteUser ? deleteUser[0] : null
 }
 
-module.exports = { newProfile, deleteProfile }
+function updateProfile(_, args) {
+  const i = profiles.findIndex(profile => profile.id === args.id)
+
+  if (i < 0) return null
+
+  const profile = {
+    ...profile[i],
+    ...args
+  }
+
+  profiles.splice(i, 1, profile)
+
+  return profile
+}
+
+module.exports = { newProfile, deleteProfile, updateProfile }

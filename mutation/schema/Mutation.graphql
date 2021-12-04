@@ -20,4 +20,9 @@ type Mutation {
     type: String
     id: String
   ): Profile
+
+  updateProfile (
+    id: String!
+    type: String
+  ): Profile
 }
