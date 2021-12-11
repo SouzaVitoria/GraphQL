@@ -11,3 +11,5 @@ db('profiles').where({ id: 2 }).first().then(response => console.log(response)).
 db('profiles').where('id', '=', 1).first().then(response => console.log(response)).finally(() => db.destroy())
 
 db('profiles').where('name', 'like', '%dmi%').then(response => console.log(response)).finally(() => db.destroy())
+
+db('profiles').whereNot('id', '=', '2').then(response => console.log(response)).finally(() => db.destroy())
