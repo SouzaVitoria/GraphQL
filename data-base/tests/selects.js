@@ -7,3 +7,5 @@ db('profiles').select('name', 'id').then(response => console.log(response)).fina
 db.select('name', 'id').from('profiles').limit(3).offset(1).then(response => console.log(response)).finally(() => db.destroy())
 
 db('profiles').where({ id: 2 }).first().then(response => console.log(response)).finally(() => db.destroy())
+
+db('profiles').where('id', '=', 1).first().then(response => console.log(response)).finally(() => db.destroy())
