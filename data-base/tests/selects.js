@@ -9,3 +9,5 @@ db.select('name', 'id').from('profiles').limit(3).offset(1).then(response => con
 db('profiles').where({ id: 2 }).first().then(response => console.log(response)).finally(() => db.destroy())
 
 db('profiles').where('id', '=', 1).first().then(response => console.log(response)).finally(() => db.destroy())
+
+db('profiles').where('name', 'like', '%dmi%').then(response => console.log(response)).finally(() => db.destroy())
