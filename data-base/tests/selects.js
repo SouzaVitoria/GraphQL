@@ -5,3 +5,5 @@ db('profiles').map(profile => profile.name).then(names => console.log(names)).fi
 db('profiles').select('name', 'id').then(response => console.log(response)).finally(() => db.destroy())
 
 db.select('name', 'id').from('profiles').limit(3).offset(1).then(response => console.log(response)).finally(() => db.destroy())
+
+db('profiles').where({ id: 2 }).then(response => console.log(response)).finally(() => db.destroy())
